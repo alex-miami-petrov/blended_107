@@ -9,3 +9,8 @@ export const getProductById = async (id) => {
   const product = await ProductModel.findById(id);
   return product;
 };
+
+export const createProduct = async (data) => {
+  const product = ProductModel.create(data);
+  return product;
+};
