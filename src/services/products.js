@@ -11,11 +11,13 @@ export const getProductById = async (id) => {
 };
 
 export const createProduct = async (data) => {
-  const product = ProductModel.create(data);
+  const product = await ProductModel.create(data);
   return product;
 };
 export const updateProduct = async (id, payload) => {
-  const product = ProductModel.findByIdAndUpdate(id, payload, { new: true });
+  const product = await ProductModel.findByIdAndUpdate(id, payload, {
+    new: true,
+  });
   return product;
 };
 
