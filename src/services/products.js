@@ -18,3 +18,8 @@ export const updateProduct = async (id, payload) => {
   const product = ProductModel.findByIdAndUpdate(id, payload, { new: true });
   return product;
 };
+
+export const deleteProduct = async (id) => {
+  const product = await ProductModel.findByIdAndDelete(id);
+  return product;
+};
