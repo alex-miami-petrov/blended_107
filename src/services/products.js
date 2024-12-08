@@ -1,7 +1,20 @@
 import { ProductModel } from '../db/model/product.js';
 
-export const getAllProducts = async () => {
-  const products = await ProductModel.find();
+export const getAllProducts = async (filter) => {
+  const products = ProductModel.find();
+
+  if (filter.category) {
+    products.where('category').equals(filter.category);
+  }
+
+  if (filter.minPrice) {
+    products.where('price').gte(filter.minPrice);
+  }
+
+  if (filter.maxPrice) {
+    products.where('price').lte(filter.maxPrice);
+  }
+
   return products;
 };
 
